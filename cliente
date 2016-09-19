@@ -1,0 +1,48 @@
+package consumidorSocket;
+import java.io.*;
+import java.net.*;
+import java.util.Scanner;
+
+public class consumidor {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		init();
+	}
+
+	public static void init(){
+        try
+        {
+  String dir="127.0.0.1";
+        	
+  Socket socket= new Socket (dir,5000);
+  //BufferedReader in = new BufferedReader (new InputStreamReader(socket.getInputStream()));
+  PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()),true);
+//if (0==0)
+//	return;
+//String c = dir.toString();
+  out.println("meter");
+ 
+  //out.println(Integer.toString(rangoA));
+  //out.println(Integer.toString(rangoB));
+      //  Thread.sleep(5000); //Tarea que consume diez segundos.
+  //respuesta=in.readLine();
+  DataInputStream in =
+      new DataInputStream(socket.getInputStream());
+  String hola= in.readUTF();
+  
+   System.out.println("respuesta que se regresa:"+hola);
+   //respuestaFuncion[contador] = hola;// se modifico aqui
+ // System.out.println("Esperada:"+respuestaFuncion);
+ // System.out.println(respuesta);
+  //respuesta=respuesta+"Esta disponible el puerto: "+ rangoA+"\n";
+//String line = "Esta diponible el puerto:"+rangoA;
+
+  //System.out.println("llego");
+  
+socket.close();
+	}catch(Exception e){}
+	
+}
+	
+}
